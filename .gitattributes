@@ -1,0 +1,2 @@
+# Preview pages are generated assets and should not dominate GitHub language stats.
+assets/*.html linguist-generated=true
