@@ -2,7 +2,7 @@
 
 > 从授权微信聊天记录，到个人关系画像、关系意义分析、边界地图、聊天建议、可改编话术和 Obsidian 关系知识库。
 
-![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![License Non-Commercial](https://img.shields.io/badge/License-Non--Commercial-red.svg)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-6aa84f)
 ![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-1f77b4)
 ![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20OpenClaw%20%7C%20Hermes-7b2cbf)
@@ -226,6 +226,12 @@ wechat-relationship-analysis/       # 展示名：情绪.skill
 
 它不会鼓励操控式 PUA，而是把聊天变成更清楚、更尊重边界、更能落地的表达。
 
-## License
+## License / 使用授权
 
-MIT
+本项目仅允许个人学习、研究和非商业使用。
+
+未经作者书面许可，不得将本项目或其衍生版本用于任何商业产品、付费服务、企业内部工具、培训课程、SaaS 服务、咨询交付、关系分析服务、情绪分析服务、聊天分析服务或其他商业场景。
+
+Commercial use is not permitted without prior written permission from the copyright holder.
+
+See [LICENSE](LICENSE) for details.
