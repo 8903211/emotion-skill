@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emotion Skill Preview</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #586170;
+      --line: #d8e1dd;
+      --paper: #f7f4ef;
+      --green: #177a5c;
+      --green-dark: #0e4d3f;
+      --coral: #e86f57;
+      --gold: #d6a642;
+      --blue: #2f6f9f;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter", "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      padding: 52px 62px;
+      background:
+        linear-gradient(90deg, rgba(23,122,92,.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(23,122,92,.08) 1px, transparent 1px),
+        var(--paper);
+      background-size: 40px 40px;
+    }
+
+    .band {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 24px;
+      background: linear-gradient(180deg, var(--green), var(--blue));
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      font-size: 20px;
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .mark {
+      width: 44px;
+      height: 44px;
+      border: 3px solid var(--green);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      box-shadow: 0 8px 20px rgba(23, 122, 92, .16);
+    }
+
+    .bubbles {
+      position: relative;
+      width: 25px;
+      height: 22px;
+    }
+
+    .bubbles::before,
+    .bubbles::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid var(--green);
+      background: var(--white);
+    }
+
+    .bubbles::before {
+      width: 18px;
+      height: 14px;
+      left: 0;
+      top: 1px;
+    }
+
+    .bubbles::after {
+      width: 15px;
+      height: 12px;
+      right: 0;
+      bottom: 0;
+      border-color: var(--coral);
+    }
+
+    h1 {
+      width: 660px;
+      margin: 0;
+      font-size: 70px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 840;
+    }
+
+    .subtitle {
+      width: 640px;
+      margin-top: 24px;
+      font-size: 25px;
+      line-height: 1.46;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 34px;
+      color: var(--green-dark);
+      font-weight: 750;
+      font-size: 21px;
+    }
+
+    .pill {
+      padding: 12px 16px;
+      background: var(--white);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+    }
+
+    .arrow {
+      color: var(--coral);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .panel {
+      position: absolute;
+      top: 64px;
+      right: 62px;
+      width: 385px;
+      height: 500px;
+      background: var(--white);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(23, 32, 42, .16);
+      padding: 26px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--green-dark);
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(214, 166, 66, .16);
+      color: #835f13;
+      font-size: 13px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--green);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.38;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 2px solid var(--line);
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .code {
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: #17202a;
+      color: #f8f4e9;
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 14px;
+    }
+
+    .corner-note {
+      position: absolute;
+      left: 62px;
+      bottom: 42px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--coral);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <div class="band"></div>
+
+    <div class="topline">
+      <div class="mark"><div class="bubbles"></div></div>
+      Codex Skill for emotional pattern analysis
+    </div>
+
+    <h1>Emotion Skill</h1>
+    <div class="subtitle">
+      Reverse-analyze who you are in relationships, what a connection means to you, how to reply, and what to save in Obsidian.
+    </div>
+
+    <div class="flow">
+      <div class="pill">Export</div>
+      <div class="arrow">→</div>
+      <div class="pill">Select</div>
+      <div class="arrow">→</div>
+      <div class="pill">Analyze</div>
+      <div class="arrow">→</div>
+      <div class="pill">Save</div>
+    </div>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>Workflow</span>
+        <span class="badge">privacy-first</span>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Prepare records</strong>
+            <span>Normalize JSON, JSONL, CSV, or copied text from authorized chats.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Profile yourself</strong>
+            <span>Infer your attachment needs, pressure loops, repair habits, and boundary patterns.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Meaning map</strong>
+            <span>Clarify what the relationship provides: confirmation, companionship, dependence, or drain.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Save knowledge</strong>
+            <span>Write Obsidian-ready notes, weekly reviews, boundary reminders, and phrase libraries.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span>Obsidian-ready, no raw private logs</span>
+        <span class="code">$wechat-relationship-analysis</span>
+      </div>
+    </section>
+
+    <div class="corner-note">
+      <span class="dot"></span>
+      For coaching, self-review, relationship pattern analysis, and personal knowledge bases
+    </div>
+  </main>
+</body>
+</html>

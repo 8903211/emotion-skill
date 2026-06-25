@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>情绪.skill README Preview</title>
+  <style>
+    :root {
+      --text: #24292f;
+      --muted: #57606a;
+      --border: #d8dee4;
+      --soft: #f6f8fa;
+      --link: #0969da;
+      --accent: #ff8a65;
+      --green: #2da44e;
+      --purple: #8250df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: 2048px;
+      min-height: 1600px;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .repo {
+      width: 906px;
+      margin-left: 408px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      min-height: 1600px;
+      background: #ffffff;
+    }
+
+    .tabs {
+      height: 66px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: stretch;
+      padding: 0 8px;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 2;
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      color: var(--muted);
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .menu {
+      margin-left: auto;
+      color: var(--muted);
+      align-self: center;
+      padding-right: 12px;
+      font-size: 24px;
+    }
+
+    .content {
+      padding: 54px 32px 120px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 0 0 34px;
+      border-bottom: 1px solid #eaeef2;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.25;
+      margin: 0 0 52px;
+      font-weight: 800;
+    }
+
+    blockquote {
+      margin: 0 auto 22px;
+      width: 640px;
+      color: #4b5563;
+      font-size: 16px;
+      font-style: italic;
+      border-left: 4px solid #d0d7de;
+      padding-left: 14px;
+      text-align: center;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 18px 0 42px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      height: 22px;
+      align-items: center;
+      padding: 0 7px;
+      color: #ffffff;
+      font-size: 12px;
+      border-radius: 3px;
+      line-height: 1;
+      background: #555;
+    }
+
+    .badge.yellow { background: #d4a72c; }
+    .badge.green { background: #6aa84f; }
+    .badge.blue { background: #1f77b4; }
+    .badge.purple { background: #7e22ce; }
+
+    .lead {
+      width: 710px;
+      margin: 0 auto 28px;
+      font-size: 17px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .center {
+      text-align: center;
+      color: #2f3742;
+      margin: 0 auto;
+      width: 760px;
+    }
+
+    .links {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    h2 {
+      margin: 36px 0 14px;
+      font-size: 22px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    h3 {
+      margin: 24px 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 18px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    pre {
+      margin: 14px 0 18px;
+      padding: 18px;
+      background: var(--soft);
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #2f3742;
+    }
+
+    code {
+      font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+      background: rgba(175,184,193,.2);
+      padding: .2em .4em;
+      border-radius: 4px;
+      font-size: 85%;
+    }
+
+    .cards {
+      display: grid;
+      gap: 16px;
+      margin: 16px 0 26px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--soft);
+      border-radius: 2px;
+      padding: 18px 48px 18px 16px;
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 10px;
+    }
+
+    .copy {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #7d8590;
+      border-radius: 3px;
+    }
+
+    .copy::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      right: 4px;
+      top: -6px;
+      border: 2px solid #7d8590;
+      border-radius: 3px;
+      background: var(--soft);
+    }
+
+    .role {
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .quote-line {
+      position: relative;
+      padding-left: 20px;
+      white-space: pre-line;
+    }
+
+    .quote-line::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: -2px;
+      color: #24292f;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .mascot {
+      position: fixed;
+      right: 44px;
+      bottom: 54px;
+      width: 96px;
+      height: 76px;
+      image-rendering: pixelated;
+    }
+
+    .face {
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      width: 62px;
+      height: 48px;
+      background: #d9b99a;
+      border: 5px solid #33271f;
+      border-radius: 14px;
+      box-shadow:
+        -12px 10px 0 #7a5b44,
+        12px 10px 0 #7a5b44,
+        0 18px 0 #7a5b44;
+    }
+
+    .face::before,
+    .face::after {
+      content: "";
+      position: absolute;
+      top: 22px;
+      width: 6px;
+      height: 8px;
+      background: #33271f;
+    }
+
+    .face::before { left: 15px; }
+    .face::after { right: 15px; }
+
+    .blush {
+      position: absolute;
+      top: 36px;
+      left: 27px;
+      width: 8px;
+      height: 5px;
+      background: #f1999c;
+      box-shadow: 28px 0 0 #f1999c;
+    }
+
+    .horn {
+      position: absolute;
+      top: 0;
+      left: 43px;
+      width: 15px;
+      height: 22px;
+      background: #8f6a4a;
+      border: 4px solid #33271f;
+      border-bottom: 0;
+      transform: rotate(-16deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="repo">
+      <nav class="tabs">
+        <div class="tab active">▥ README</div>
+        <div class="tab">⚖ MIT license</div>
+        <div class="menu">☷</div>
+      </nav>
+
+      <article class="content">
+        <section class="hero">
+          <h1>情绪.skill</h1>
+
+          <blockquote>从授权微信聊天记录，到个人关系画像、关系意义分析、聊天建议和 Obsidian 关系知识库。</blockquote>
+
+          <div class="badges">
+            <span class="badge">License</span><span class="badge yellow">MIT</span>
+            <span class="badge">Agent Skills</span><span class="badge green">Standard</span>
+            <span class="badge">skills.sh</span><span class="badge blue">Compatible</span>
+            <span class="badge">Runtime</span><span class="badge purple">Claude Code · Codex · Cursor · OpenClaw · Hermes</span>
+          </div>
+
+          <p class="lead">情绪.skill 帮你从聊天记录反向看清自己、看清关系，再把结论沉淀进自己的知识库。</p>
+
+          <p class="center">
+            基于开放的 <a>Agent Skills 协议</a>，可在 Claude Code、Codex、Cursor、OpenClaw、Hermes Agent、CodeBuddy、Workbuddy、Gemini CLI、OpenCode 等兼容 runtime 中运行。
+          </p>
+
+          <p class="links">
+            <a>看效果</a> · <a>安装</a> · <a>Obsidian 知识库</a> · <a>使用建议</a>
+          </p>
+        </section>
+
+        <h2>效果预览</h2>
+
+        <div class="cards">
+          <div class="card">
+            <div class="copy"></div>
+            <div class="role">用户</div>
+            <div class="quote-line">我导出了最近几天和某个联系人的微信聊天。
+我想知道这段关系为什么这么牵动我，并保存成复盘笔记。</div>
+            <div class="role">Skill</div>
+            <div class="quote-line">这段关系对你的意义不只是聊天本身，它承担了确认感、陪伴感和情绪稳定功能。
+真正要看的不是一句话怎么回，而是你为什么会被这段互动持续牵动。建议保存到 Obsidian，后续按周复盘触发点、边界和有效话术。</div>
+          </div>
+
+          <div class="card">
+            <div class="copy"></div>
+            <div class="role">用户</div>
+            <div class="quote-line">对方问我为什么没发消息，我不想一直解释。</div>
+            <div class="role">Skill</div>
+            <div class="quote-line">你可以回：
+我刚醒，有点懵，缓一下再回你。
+早上我慢热，不是不想理你。
+你要是想我，可以直接说，别一上来像怪我。</div>
+          </div>
+        </div>
+
+        <h2>它解决什么问题</h2>
+
+        <p>很多关系里的内耗，不是因为你不会回消息，而是因为你看不清聊天背后的结构，也看不清自己在关系里的模式：</p>
+        <ul>
+          <li>从聊天记录反推：你在关系里是什么样的人？</li>
+          <li>这段关系对你意味着什么：陪伴、确认、依赖、补偿，还是消耗？</li>
+          <li>对方是在表达想念，还是在用指责要确认？</li>
+          <li>你是在正常解释，还是已经进入自证和补救循环？</li>
+          <li>一段聊天为什么会从轻松变成审问？</li>
+          <li>哪些话现在能发，哪些话只会让关系更重？</li>
+        </ul>
+
+        <p>情绪.skill 把授权微信聊天记录变成可分析的证据层，再输出个人关系画像、关系意义判断、边界建议和可直接改编的聊天表达。</p>
+
+        <h2>完整流程</h2>
+
+        <pre>准备授权聊天记录
+        ↓
+选择会话和时间范围
+        ↓
+标准化 JSON / JSONL / CSV / TXT
+        ↓
+建立证据地图
+        ↓
+分析关系结构和聊天动态
+        ↓
+输出行动建议、回复草稿、话术参考
+        ↓
+保存到 Obsidian / Markdown 知识库</pre>
+
+        <h2>能输出什么</h2>
+
+        <h3>关系复盘</h3>
+        <ul>
+          <li>时间范围和数据范围</li>
+          <li>双方消息节奏变化</li>
+          <li>情绪触发点</li>
+          <li>边界被突破的位置</li>
+          <li>冲突、修复、冷淡、靠近的循环</li>
+          <li>个人关系画像和关系意义分析</li>
+          <li>Obsidian 复盘笔记和可复用话术库</li>
+        </ul>
+      </article>
+    </main>
+
+    <div class="mascot">
+      <div class="horn"></div>
+      <div class="face"><div class="blush"></div></div>
+    </div>
+  </div>
+</body>
+</html>

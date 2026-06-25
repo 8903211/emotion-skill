@@ -1,0 +1,6 @@
+interface:
+  display_name: "Emotion"
+  short_description: "Analyze chats, emotional patterns, relationship meaning, and draft replies."
+  default_prompt: "Use $wechat-relationship-analysis to analyze my authorized WeChat chat export and produce emotional pattern insight, relationship meaning, chat advice, reusable phrases, and an Obsidian-ready note."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,28 @@
+# Local environment and secrets
+.env
+*.env
+*.key
+*.pem
+*密钥*
+*密码*
+
+# Runtime caches
+__pycache__/
+*.pyc
+.cache/
+tmp/
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# Node/Python dependencies if contributors add tooling later
+node_modules/
+.venv/
+venv/
+dist/
+build/
+coverage/
